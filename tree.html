@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blinking ASCII Tree</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        pre {
+            font-size: 16px;
+            line-height: 1.2;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <pre id="asciiTree"></pre>
+
+    <script>
+        const frames = [
+            `        *
+       /|\\
+      /*|O\\
+     /*/|\\*\\
+    /X/O|*\\X\\
+   /*/X/|\\O|*\\
+        |X|
+        |X|`,
+            `        *
+       /|\\
+      /*|X\\
+     /*/|\\O\\
+    /O/X|*\\O\\
+   /*/O/|\\X|*\\
+        |O|
+        |O|`
+        ];
+
+        let currentFrame = 0;
+
+        function animateTree() {
+            const treeElement = document.getElementById("asciiTree");
+            treeElement.textContent = frames[currentFrame];
+            currentFrame = (currentFrame + 1) % frames.length;
+        }
+
+        // Start animation
+        setInterval(animateTree, 500);
+    </script>
+</body>
+</html>
